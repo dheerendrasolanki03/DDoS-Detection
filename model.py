@@ -15,8 +15,8 @@ from tensorflow.keras.optimizers import Adam  # type: ignore
 from tensorflow.keras.callbacks import EarlyStopping, ReduceLROnPlateau  # type: ignore
 
 class DDoSModel:
-    def __init__(self, DDOS_Dataset_Cleaned_50000):
-        self.raw_data = pd.read_csv(DDOS_Dataset_Cleaned_50000)
+    def __init__(self, DDOS_Dataset):
+        self.raw_data = pd.read_csv(DDOS_Dataset)
         self.numeric_cols = self.raw_data.select_dtypes(include=[np.number]).columns
         self.label_encoder = None
         self.rf_model = None
@@ -131,7 +131,7 @@ class DDoSModel:
 
 
 # Run the full pipeline
-ddos = DDoSModel('DDOS_Dataset_Cleaned_50000.csv')
+ddos = DDoSModel('DDOS_Dataset.csv')
 
 print("Running EDA...")
 ddos.run_eda()
